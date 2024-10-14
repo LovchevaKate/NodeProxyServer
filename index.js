@@ -3,7 +3,7 @@ import axios from "axios";
 import express from "express";
 
 dotenv.config();
-const { NASA_API_KEY, PORT } = process.env;
+const { NASA_API_KEY, PORT, NASA_API_URL } = process.env;
 
 const app = express();
 
@@ -14,13 +14,14 @@ app.listen(PORT, () => {
 const monday = "2024-10-07";
 const friday = "2024-10-11";
 
-const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${monday}&end_date=${friday}&api_key=${NASA_API_KEY}`;
+const url = `${NASA_API_URL}?start_date=${monday}&end_date=${friday}&api_key=${NASA_API_KEY}`;
 
-await axios
-  .get(url)
-  .then((response) => {
-    console.log(response.data);
-  })
-  .catch((error) => {
-    console.error("Error fetching data", error);
-  });
+app.get("/meteors", async (request, response) => {
+  try {
+    const result = await axios.get(url);
+
+    response.json(result.data);
+  } catch (error) {
+    response.status(500).json({ error: "Faild to fetch data." });
+  }
+});
