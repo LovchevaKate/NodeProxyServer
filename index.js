@@ -1,14 +1,20 @@
 import dotenv from "dotenv";
 import axios from "axios";
+import express from "express";
 
 dotenv.config();
+const { NASA_API_KEY, PORT } = process.env;
 
-const apiKey = process.env.NASA_API_KEY;
+const app = express();
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port: ${PORT}`);
+});
 
 const monday = "2024-10-07";
 const friday = "2024-10-11";
 
-const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${monday}&end_date=${friday}&api_key=${apiKey}`;
+const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${monday}&end_date=${friday}&api_key=${NASA_API_KEY}`;
 
 await axios
   .get(url)
