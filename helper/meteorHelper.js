@@ -26,6 +26,10 @@ const getDiameter = (diameter) => {
 };
 
 const extractCloseApproachData = (closeApproachData) => {
+  if (!closeApproachData || closeApproachData.length === 0) {
+    return { relative_velocity: null, close_approach_date_full: null };
+  }
+
   return {
     relative_velocity:
       closeApproachData[0].relative_velocity.kilometers_per_second,
