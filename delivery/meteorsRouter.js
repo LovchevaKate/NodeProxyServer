@@ -5,7 +5,12 @@ const meteorRouter = express.Router();
 
 meteorRouter.get("/meteors", async (request, response) => {
   try {
-    const meteors = await fetchMeteors();
+    const { date, count, wereDangerousMeteors } = request.query;
+    if (date === undefined || date === null) {
+      return response.status(400).json({ error: "Missing date parameter" });
+    }
+
+    const meteors = await fetchMeteors(date, count, wereDangerousMeteors);
     return response.json(meteors);
   } catch (error) {
     return response.status(500).json({ error: "Faild to fetch data." });
