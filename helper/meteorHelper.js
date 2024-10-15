@@ -1,4 +1,4 @@
-const mapMeteors = async (data) => {
+export function mapMeteors(data) {
   return Object.values(data).flatMap((meteors) =>
     meteors.map((item) => {
       const { relative_velocity, close_approach_date_full } =
@@ -15,7 +15,37 @@ const mapMeteors = async (data) => {
       };
     })
   );
-};
+}
+
+export function filterMeteors(meteors, count, wereDangerousMeteors) {
+  if (wereDangerousMeteors != null) {
+    const isWereDangerousMeteors = wereDangerousMeteors === "true";
+    meteors = meteors.filter(
+      (meteor) =>
+        meteor.is_potentially_hazardous_asteroid === isWereDangerousMeteors
+    );
+  }
+  if (count && !isNaN(count) && count > 0) {
+    meteors = meteors.slice(0, parseInt(count));
+  }
+
+  return meteors;
+}
+
+export function getMondayAndFridayOfWeek(date) {
+  const givenDate = new Date(date);
+  const dayOfWeek = givenDate.getDay();
+
+  const distanceToMonday = dayOfWeek - 1;
+  const monday = new Date(givenDate);
+  monday.setDate(givenDate.getDate() - distanceToMonday);
+
+  const distanceToFriday = 5 - dayOfWeek;
+  const friday = new Date(givenDate);
+  friday.setDate(givenDate.getDate() + distanceToFriday);
+
+  return { monday: formatDate(monday), friday: formatDate(friday) };
+}
 
 const getDiameter = (diameter) => {
   return (
@@ -37,4 +67,9 @@ const extractCloseApproachData = (closeApproachData) => {
   };
 };
 
-export default mapMeteors;
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
