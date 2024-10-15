@@ -6,7 +6,7 @@ const meteorRouter = express.Router();
 meteorRouter.get("/meteors", async (request, response) => {
   try {
     const { date, count, wereDangerousMeteors } = request.query;
-    if (date === undefined || date === null) {
+    if (!date) {
       return response.status(400).json({ error: "Missing date parameter" });
     }
 
