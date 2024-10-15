@@ -1,7 +1,10 @@
 import axios from "axios";
-import { config } from "../config.js";
+import { NASA_API_KEY, NASA_API_URL } from "../config.js";
 
-const url = `${config.nasaApiUrl}?start_date=${config.monday}&end_date=${config.friday}&api_key=${config.nasaApiKey}`;
+const seventhOfOctober = "2024-10-07";
+const eleventhOfOctober = "2024-10-11";
+
+const url = `${NASA_API_URL}?start_date=${seventhOfOctober}&end_date=${eleventhOfOctober}&api_key=${NASA_API_KEY}`;
 
 const getMeteors = async () => {
   const result = await axios.get(url);
