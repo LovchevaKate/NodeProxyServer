@@ -14,7 +14,7 @@ const getMondayAndFridayOfWeek = async (date) => {
   const givenDate = new Date(date);
   const dayOfWeek = givenDate.getDay();
 
-  const distanceToMonday = (dayOfWeek + 6) % 7;
+  const distanceToMonday = dayOfWeek - 1;
   const monday = new Date(givenDate);
   monday.setDate(givenDate.getDate() - distanceToMonday);
 
