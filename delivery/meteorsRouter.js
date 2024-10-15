@@ -11,7 +11,7 @@ meteorRouter.get("/meteors", async (request, response) => {
     }
 
     const meteors = await fetchMeteors(date, count, wereDangerousMeteors);
-    return response.json(meteors);
+    response.render("home.html", { meteors });
   } catch (error) {
     return response.status(500).json({ error: "Faild to fetch data." });
   }
