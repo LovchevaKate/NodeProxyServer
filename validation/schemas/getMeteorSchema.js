@@ -1,22 +1,22 @@
-const Joi = require("joi");
+import Joi from "joi";
 
 const getMeteorSchema = Joi.object({
-  date: Joi.string().isoDate().required().max("now").messages({
-    "date.max": "The date cannot be in the future.",
+  date: Joi.string().isoDate().required().messages({
     "date.base": "The date must be a valid ISO date format (YYYY-MM-DD).",
     "any.required": "The date parameter is required.",
   }),
 
-  count: Joi.string().optional().pattern(/^\d+$/).messages({
-    "string.pattern.name": '"count" must only contain digits',
-    "count.negative": '"count" cannot be less than 0',
+  count: Joi.string().optional().messages({
     "any.optional": '"count" is optional but must be a string if provided',
   }),
 
-  "were-dangerous-meteors": Joi.boolean().optional().default(false).messages({
-    "boolean.base":
-      "The value for were-dangerous-meteors must be true or false.",
-  }),
+  wereDangerousMeteors: Joi.string()
+    .valid("true", "false")
+    .optional()
+    .messages({
+      "string.base": "were-dangerous-meteors must be a string.",
+      "any.only": 'were-dangerous-meteors must be either "true" or "false".',
+    }),
 });
 
 export default getMeteorSchema;

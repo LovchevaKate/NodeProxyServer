@@ -1,4 +1,4 @@
-const Joi = require("joi");
+import Joi from "joi";
 
 const postRoverImageSchema = Joi.object({
   userId: Joi.string().pattern(/^\d+$/).required().messages({
