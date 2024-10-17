@@ -3,6 +3,7 @@ import express from "express";
 import meteorRouter from "./delivery/meteorsRouter.js";
 import bodyParser from "body-parser";
 import nunjucks from "nunjucks";
+import errorHandler from "./helper/errorHandler.js";
 
 dotenv.config();
 const { PORT } = process.env;
@@ -16,6 +17,7 @@ nunjucks.configure("views", {
 });
 
 app.use(meteorRouter);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
