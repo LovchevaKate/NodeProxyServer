@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
-export const { NASA_API_KEY, NASA_API_URL } = process.env;
+export const { NASA_API_KEY, NASA_API_URL } = process.env

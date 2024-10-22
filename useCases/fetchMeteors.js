@@ -1,15 +1,15 @@
-import getMeteors from "../repository/meteorRepository.js";
-import { mapMeteors, filterMeteors } from "../helper/meteorHelper.js";
+import getMeteors from '../repository/meteorRepository.js'
+import { mapMeteors, filterMeteors } from '../helper/meteorHelper.js'
 
 const fetchMeteors = async (date, count, wereDangerousMeteors) => {
-  let meteors = await getMeteors(date);
-  let mappedMeteors = await mapMeteors(meteors);
-  let filteredMeteors = await filterMeteors(
+  const meteors = await getMeteors(date)
+  const mappedMeteors = await mapMeteors(meteors)
+  const filteredMeteors = await filterMeteors(
     mappedMeteors,
     count,
     wereDangerousMeteors
-  );
-  return filteredMeteors;
-};
+  )
+  return filteredMeteors
+}
 
-export default fetchMeteors;
+export default fetchMeteors
