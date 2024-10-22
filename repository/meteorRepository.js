@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { NASA_API_KEY, NASA_API_URL } from '../config.js'
+import { config } from '../config.js'
 import { getMondayAndFridayOfWeek } from '../helper/meteorHelper.js'
 
 const getMeteors = async (date) => {
-  const { monday, friday } = await getMondayAndFridayOfWeek(date)
+  const { monday, friday } = getMondayAndFridayOfWeek(date)
 
-  const url = `${NASA_API_URL}?start_date=${monday}&end_date=${friday}&api_key=${NASA_API_KEY}`
+  const url = `${config.nasaApiUrl}?start_date=${monday}&end_date=${friday}&api_key=${config.nasaApiKey}`
 
   const result = await axios.get(url)
   return result.data.near_earth_objects
