@@ -16,7 +16,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "lint-staged": "lint-staged"
+    "pre-commit": "lint-staged"
   },
   "repository": {
     "type": "git",
