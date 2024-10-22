@@ -4,7 +4,7 @@ import getRoverImage from '../useCases/getRoverImage.js'
 
 const meteorRouter = express.Router()
 
-meteorRouter.get("/meteors", async (request, response, next) => {
+meteorRouter.get('/meteors', async (request, response, next) => {
   try {
     const { date, count, wereDangerousMeteors } = request.query
     const meteors = await fetchMeteors(date, count, wereDangerousMeteors)
