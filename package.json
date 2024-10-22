@@ -44,10 +44,5 @@
     "*.{js, ts}": [
       "eslint"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
