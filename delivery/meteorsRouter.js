@@ -18,7 +18,7 @@ meteorRouter.post('/roverImage', async (request, response, next) => {
   try {
     const { userId, userName, userApiKey } = request.body
     const image = await getRoverImage(userApiKey)
-    return response.json({ photo: image })
+    return response.json({ photo: image, userId, userName })
   } catch (error) {
     next(error)
   }
