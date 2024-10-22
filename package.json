@@ -4,12 +4,8 @@
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-n": "^17.11.1",
     "express": "^4.21.1",
-    "globals": "^15.11.0",
-    "nunjucks": "^3.2.4",
-    "prettier": "^3.3.3"
+    "nunjucks": "^3.2.4"
   },
   "name": "nodeproxyserver",
   "description": "",
@@ -19,7 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -38,7 +35,11 @@
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-security": "^3.0.1",
     "husky": "^9.1.6",
-    "lint-staged": "^15.2.10"
+    "lint-staged": "^15.2.10",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-n": "^17.11.1",
+    "globals": "^15.11.0",
+    "prettier": "^3.3.3"
   },
   "lint-staged": {
     "*.{js, ts}": [
