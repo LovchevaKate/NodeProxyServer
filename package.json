@@ -17,7 +17,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "pre-commit": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -39,7 +39,8 @@
     "eslint-plugin-security": "^3.0.1",
     "globals": "^15.11.0",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "husky": "^8.0.0"
   },
   "husky": {
     "hooks": {
