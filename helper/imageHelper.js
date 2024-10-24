@@ -1,9 +1,9 @@
-export function findMostRecentPhoto(photos) {
+export function findMostRecentPhoto (photos) {
   const photo = photos.reduce((mostRecent, currentPhoto) => {
     return new Date(currentPhoto.earth_date) > new Date(mostRecent.earth_date)
       ? currentPhoto
-      : mostRecent;
-  });
+      : mostRecent
+  })
 
-  return photo.img_src;
+  return photo.img_src
 }

@@ -13,7 +13,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "pre-commit": "lint-staged",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -22,5 +27,30 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/LovchevaKate/NodeProxyServer#readme"
+  "homepage": "https://github.com/LovchevaKate/NodeProxyServer#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.11.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-security": "^3.0.1",
+    "globals": "^15.11.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "husky": "^8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, ts}": [
+      "eslint"
+    ]
+  }
 }
