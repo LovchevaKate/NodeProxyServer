@@ -21,6 +21,14 @@ meteorRouter.get(
   }
 );
 
+meteorRouter.get("/rover", async (request, response, next) => {
+  try {
+    response.render("roverImageForm.njk");
+  } catch (error) {
+    next(error);
+  }
+});
+
 meteorRouter.post(
   "/roverImage",
   validateRequest(postRoverImageSchema, "body"),
@@ -28,7 +36,7 @@ meteorRouter.post(
     try {
       const { userId, userName, userApiKey } = request.body;
       const image = await getRoverImage(userApiKey);
-      return response.json({ photo: image });
+      response.render("roverImage.njk", { image });
     } catch (error) {
       next(error);
     }

@@ -1,0 +1,22 @@
+{% extends 'base.njk' %} 
+{% set title = 'NodeProxyServer' %} 
+{% block content %}
+<h1>Mars Rover Photo</h1>
+
+  <form action="/roverImage" method="POST">
+    <label for="userId">User Id:</label>
+    <input type="text" id="userId" name="userId" required>
+    <br><br>
+
+    <label for="userName">User Name:</label>
+    <input type="text" id="userName" name="userName" required>
+    <br><br>
+
+    <label for="userApiKey">User Api Key:</label>
+    <input type="text" id="userApiKey" name="userApiKey" required>
+    <br><br>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
