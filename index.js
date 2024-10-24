@@ -10,6 +10,7 @@ const { PORT } = process.env
 
 const app = express()
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 nunjucks.configure('views', {
   autoescape: true,
