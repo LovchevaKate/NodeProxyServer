@@ -11,14 +11,15 @@
   "name": "nodeproxyserver",
   "description": "",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "pre-commit": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "npx tsx index.ts"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,9 @@
   "license": "ISC",
   "homepage": "https://github.com/LovchevaKate/NodeProxyServer#readme",
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.9",
+    "@types/nunjucks": "^3.2.6",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
@@ -39,9 +43,12 @@
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-security": "^3.0.1",
     "globals": "^15.11.0",
+    "husky": "^8.0.0",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "husky": "^8.0.0"
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
   },
   "husky": {
     "hooks": {

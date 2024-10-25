@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-const postRoverImageSchema = Joi.object({
+export const postRoverImageSchema = Joi.object({
   userId: Joi.string().pattern(/^\d+$/).required().messages({
     'string.base': 'userId must be a string.',
     'string.pattern.base': 'userId must only contain numeric characters.',
@@ -17,5 +17,3 @@ const postRoverImageSchema = Joi.object({
     'any.required': 'userApiKey is required.'
   })
 })
-
-export default postRoverImageSchema

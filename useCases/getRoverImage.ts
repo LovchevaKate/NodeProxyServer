@@ -1,9 +1,9 @@
 import getRoverImages from '../repository/imageRepository.js'
 import { findMostRecentPhoto } from '../helper/imageHelper.js'
 
-const getRoverImage = async (userApiKey) => {
+const getRoverImage = async (userApiKey: string) => {
   const roverImages = await getRoverImages(userApiKey)
-  const mostRecentPhoto = await findMostRecentPhoto(roverImages.photos)
+  const mostRecentPhoto = findMostRecentPhoto(roverImages.photos)
   return mostRecentPhoto
 }
 
