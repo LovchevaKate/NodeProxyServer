@@ -7,12 +7,13 @@ const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  const { statusCode, message } = error
-
-  res.status(statusCode).json({
-    status: 'error',
-    message
-  })
+    const errStatus = error.statusCode || 500;
+    const errMsg = error.message || 'Something went wrong';
+    res.status(errStatus).json({
+        success: false,
+        status: errStatus,
+        message: errMsg,
+    })
 }
 
 export default errorHandler
