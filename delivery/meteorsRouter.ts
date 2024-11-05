@@ -5,6 +5,7 @@ import { getMeteorSchema } from '../validation/schemas/getMeteorSchema.ts'
 import { validateRequest } from '../validation/validator.ts'
 import { postRoverImageSchema } from '../validation/schemas/postRoverImageSchema.ts'
 import { MeteorQuery } from '../types/meteorRequest.ts'
+import { Logger } from '../helper/logger.ts'
 
 const meteorRouter = express.Router()
 
@@ -16,6 +17,8 @@ meteorRouter.get(
       const meteorQuery: MeteorQuery = request.query
       const isWereDangerousMeteors = meteorQuery.wereDangerousMeteors === 'true'
       const meteors = await fetchMeteors(meteorQuery.date!, Number(meteorQuery.count), isWereDangerousMeteors)
+
+      Logger.info(`Meteors were successfully fetched.`)
       response.render('meteor.njk', { meteors })
     } catch (error) {
       next(error)
@@ -41,6 +44,8 @@ meteorRouter.post(
     try {
       const { userId, userName, userApiKey } = request.body
       const image = await getRoverImage(userApiKey)
+
+      Logger.info(`Rover image was successfully fetched.`)
       response.render('roverImage.njk', { image, userId, userName })
     } catch (error) {
       next(error)
