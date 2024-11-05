@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import HttpError from '../types/httpError.ts'
 import * as Sentry from "@sentry/node";
+import {Logger} from "./logger.ts"
 
 const errorHandler = (
   error: HttpError,
@@ -11,7 +12,7 @@ const errorHandler = (
     const errStatus = error.status|| 500;
     const errMsg = error.message || 'Something went wrong';
 
-    Sentry.captureException(error);
+    Logger.error(error);
 
     res.status(errStatus).json({
         success: false,
