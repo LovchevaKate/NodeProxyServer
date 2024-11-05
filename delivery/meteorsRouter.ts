@@ -14,7 +14,8 @@ meteorRouter.get(
   async (request: Request, response: Response, next: NextFunction) => {
     try {
       const meteorQuery: MeteorQuery = request.query
-      const meteors = await fetchMeteors(meteorQuery.date!, meteorQuery.count!, meteorQuery.wereDangerousMeteors!)
+      const isWereDangerousMeteors = meteorQuery.wereDangerousMeteors === 'true'
+      const meteors = await fetchMeteors(meteorQuery.date!, Number(meteorQuery.count), isWereDangerousMeteors)
       response.render('meteor.njk', { meteors })
     } catch (error) {
       next(error)
