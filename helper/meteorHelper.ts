@@ -22,16 +22,14 @@ export function mapMeteors(data: NearEarthObjects) : Meteor[] {
   )
 }
 
-export function filterMeteors(meteors: Meteor[], count: string, wereDangerousMeteors: string) {
-  if (wereDangerousMeteors != null) {
-    const isWereDangerousMeteors = wereDangerousMeteors === 'true'
-    meteors = meteors.filter(
-      (meteor) =>
-        meteor.is_potentially_hazardous_asteroid === isWereDangerousMeteors
-    )
-  }
-  if (count && !Number.isNaN(Number(count)) && Number(count) > 0) {
-    meteors = meteors.slice(0, Number(count))
+export function filterMeteors(meteors: Meteor[], count: number, wereDangerousMeteors: boolean) {
+  meteors = meteors.filter(
+    (meteor) =>
+      meteor.is_potentially_hazardous_asteroid === wereDangerousMeteors
+  )
+  
+  if (count && count > 0) {
+    meteors = meteors.slice(0, count)
   }
 
   return meteors
