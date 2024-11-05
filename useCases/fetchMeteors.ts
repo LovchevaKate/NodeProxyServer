@@ -1,10 +1,10 @@
 import getMeteors from '../repository/meteorRepository.js'
 import { mapMeteors, filterMeteors } from '../helper/meteorHelper.js'
 
-const fetchMeteors = async (date, count, wereDangerousMeteors) => {
+const fetchMeteors = async (date: string, count: number, wereDangerousMeteors: boolean) => {
   const meteors = await getMeteors(date)
   const mappedMeteors = mapMeteors(meteors)
-  const filteredMeteors = await filterMeteors(
+  const filteredMeteors = filterMeteors(
     mappedMeteors,
     count,
     wereDangerousMeteors

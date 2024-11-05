@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-const getMeteorSchema = Joi.object({
+export const getMeteorSchema = Joi.object({
   date: Joi.string().isoDate().required().messages({
     'date.base': 'The date must be a valid ISO date format (YYYY-MM-DD).',
     'any.required': 'The date parameter is required.'
@@ -18,5 +18,3 @@ const getMeteorSchema = Joi.object({
       'any.only': 'were-dangerous-meteors must be either "true" or "false".'
     })
 })
-
-export default getMeteorSchema
