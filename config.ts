@@ -8,7 +8,8 @@ const config = {
   nasaApiUrl: process.env.NASA_API_URL,
   nasaApiPhotoUrl: process.env.NASA_API_PHOTO_URL,
   sol: process.env.SOL,
-  camera: process.env.CAMERA
+  camera: process.env.CAMERA,
+  sentryDsn: process.env.SENTRY_DSN
 }
 
 export { config }

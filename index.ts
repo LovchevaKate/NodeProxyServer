@@ -1,3 +1,4 @@
+import "./sentry.js"
 import express, { Application } from 'express'
 import meteorRouter from './delivery/meteorsRouter.ts'
 import bodyParser from 'body-parser'
